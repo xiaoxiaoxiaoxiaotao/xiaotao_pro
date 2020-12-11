@@ -18,9 +18,9 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-`define counter 2048
-`define counter_1 2047
-`define counter_2 2046
+`define counter 1024
+`define counter_1 1023
+`define counter_2 1022
 module sparse_mxv_top_top(
 input clk,
     input rst,
@@ -28,10 +28,16 @@ input clk,
     input [1023:0] inputx_output,
     input [4095:0] inputw0,
     input [4095:0] inputw1,
+    input [4095:0] inputw2,
+    input [4095:0] inputw3,
     input [639:0] inputw_index0,
-    input [6399:0] inputw_index1,
+    input [639:0] inputw_index1,
+    input [639:0] inputw_index2,
+    input [639:0] inputw_index3,
     output wire [15:0] one_elements0,
     output wire [15:0] one_elements1,
+    output wire [15:0] one_elements2,
+    output wire [15:0] one_elements3,
     output reg ena,
     output reg wea,
     output reg eninput ,
@@ -47,9 +53,11 @@ input clk,
     reg  [2:0] state ;
     reg  [11:0] statecount;
 
-    sparse_mxv_top sparse_mxv_top_test0(.clk(clk),.rst(rst),.idle(idle),.one_elements(one_elements0),.inputx_output(inputx_output),.inputw0(inputw0),.inputw0_index(inputw_index0));
+    sparse_mxv_top sparse_mxv_top_test0(.clk(clk),.rst(rst),.idle(idle),.one_elements(one_elements0),.one_elements1(one_elements1),.one_elements2(one_elements2),.one_elements3(one_elements3)
+    ,.inputx_output(inputx_output),.inputw0(inputw0),.inputw1(inputw1),.inputw2(inputw2),.inputw3(inputw3)
+    ,.inputw0_index(inputw_index0),.inputw1_index(inputw_index1),.inputw2_index(inputw_index2),.inputw3_index(inputw_index3));
  
-    sparse_mxv_top sparse_mxv_top_test1(.clk(clk),.rst(rst),.idle(idle),.one_elements(one_elements1),.inputx_output(inputx_output),.inputw0(inputw1),.inputw0_index(inputw_index1));
+    //sparse_mxv_top sparse_mxv_top_test1(.clk(clk),.rst(rst),.idle(idle),.one_elements(one_elements1),.inputx_output(inputx_output),.inputw0(inputw1),.inputw0_index(inputw_index1));
 
     
 
