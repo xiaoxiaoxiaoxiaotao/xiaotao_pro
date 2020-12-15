@@ -35,6 +35,7 @@ wire clk;
 
 reg  [3:0] state;
 reg  spv_idle;
+reg  spv_idle2;
 reg  sigmoid_idle;
 create_clk my_clk
    (
@@ -82,8 +83,18 @@ wire        start_C_bram3;  // the signal to driver C_bram_in
 wire        start_C_bram4;
 
 //the signal of ram 
-wire   [10:0]     addra      ;  // the addr of W
-wire   [10:0]     addra1      ;  // the addr of U
+wire   [10:0]     addra00      ;  // the addr of W
+wire   [10:0]     addra01      ;  // the addr of W
+wire   [10:0]     addra02      ;  // the addr of W
+wire   [10:0]     addra03      ;  // the addr of W
+
+
+wire   [10:0]     addra10      ;  // the addr of U
+wire   [10:0]     addra11      ;  // the addr of U
+wire   [10:0]     addra12      ;  // the addr of U
+wire   [10:0]     addra13      ;  // the addr of U
+
+
 wire   [10:0]     addra2      ;  // the addr of W
 wire   [10:0]     addra3      ;  // the addr of U
 wire   ena ;
@@ -143,8 +154,8 @@ C_bram my_C_bram (
 );
 
 // the ram of xt and xt-1
-wire [1023:0]  inputx_output;
-wire [1023:0]  inputxt_1_output;
+wire [783:0]  inputx_output;
+wire [783:0]  inputxt_1_output;
 reg    eninputxt ;
 reg    weainputxt ;
 reg    eninputxt_1 ;
@@ -227,10 +238,10 @@ wire [639:0]  inputw_index00;
 wire [639:0]  inputw_index10;
 
 
-inputw_0_0  my_inputw_0_0(.clka(clk),.ena(ena),.wea(wea),.addra(addra),.dina(inputw00),.douta(inputw00));
-inputw_index_0_0  my_inputw_index_0_0(.clka(clk),.ena(ena),.wea(wea),.addra(addra),.dina(inputw_index00),.douta(inputw_index00));
-inputw_1_0  my_inputw_1_0(.clka(clk),.ena(ena),.wea(wea),.addra(addra),.dina(inputw10),.douta(inputw10));
-inputw_index_1_0  my_inputw_index_1_0(.clka(clk),.ena(ena),.wea(wea),.addra(addra),.dina(inputw_index10),.douta(inputw_index10));
+inputw_0_0  my_inputw_0_0(.clka(clk),.ena(ena),.wea(wea),.addra(addra00),.dina(inputw00),.douta(inputw00));
+inputw_index_0_0  my_inputw_index_0_0(.clka(clk),.ena(ena),.wea(wea),.addra(addra00),.dina(inputw_index00),.douta(inputw_index00));
+inputw_1_0  my_inputw_1_0(.clka(clk),.ena(ena),.wea(wea),.addra(addra01),.dina(inputw10),.douta(inputw10));
+inputw_index_1_0  my_inputw_index_1_0(.clka(clk),.ena(ena),.wea(wea),.addra(addra01),.dina(inputw_index10),.douta(inputw_index10));
 
 sigmoid_function sigmoid_function1(.clk(clk),.rst(rst),.idle(sigmoid_idle),.one_elements_in(sigmoid_input1),.counter(`sigmoid_counter),.res_sigmoid(sigmoid_output1),.sigmoid_dateout(sigmoid_dateout1),.start_C_bram(start_C_bram1));
 sigmoid_function sigmoid_function2(.clk(clk),.rst(rst),.idle(sigmoid_idle),.one_elements_in(sigmoid_input2),.counter(`sigmoid_counter),.res_sigmoid(sigmoid_output2),.sigmoid_dateout(sigmoid_dateout2),.start_C_bram(start_C_bram2));
@@ -245,10 +256,10 @@ wire [639:0]  inputw_index02;
 wire [639:0]  inputw_index12;
 
 
-inputw_0_2  my_inputw_0_2(.clka(clk),.ena(ena2),.wea(wea2),.addra(addra),.dina(inputw02),.douta(inputw02));
-inputw_index_0_2  my_inputw_index_0_2(.clka(clk),.ena(ena2),.wea(wea2),.addra(addra),.dina(inputw_index02),.douta(inputw_index02));
-inputw_1_2  my_inputw_1_2(.clka(clk),.ena(ena2),.wea(wea2),.addra(addra),.dina(inputw12),.douta(inputw12));
-inputw_index_1_2  my_inputw_index_1_2(.clka(clk),.ena(ena2),.wea(wea2),.addra(addra),.dina(inputw_index12),.douta(inputw_index12));
+inputw_0_2  my_inputw_0_2(.clka(clk),.ena(ena2),.wea(wea2),.addra(addra02),.dina(inputw02),.douta(inputw02));
+inputw_index_0_2  my_inputw_index_0_2(.clka(clk),.ena(ena2),.wea(wea2),.addra(addra02),.dina(inputw_index02),.douta(inputw_index02));
+inputw_1_2  my_inputw_1_2(.clka(clk),.ena(ena2),.wea(wea2),.addra(addra03),.dina(inputw12),.douta(inputw12));
+inputw_index_1_2  my_inputw_index_1_2(.clka(clk),.ena(ena2),.wea(wea2),.addra(addra03),.dina(inputw_index12),.douta(inputw_index12));
 
 sigmoid_function sigmoid_function3(.clk(clk),.rst(rst),.idle(sigmoid_idle),.one_elements_in(sigmoid_input3),.counter(`sigmoid_counter),.res_sigmoid(sigmoid_output3),.sigmoid_dateout(sigmoid_dateout3),.start_C_bram(start_C_bram3));
 sigmoid_function sigmoid_function4(.clk(clk),.rst(rst),.idle(sigmoid_idle),.one_elements_in(sigmoid_input4),.counter(`sigmoid_counter),.res_sigmoid(sigmoid_output4),.sigmoid_dateout(sigmoid_dateout4),.start_C_bram(start_C_bram4));
@@ -260,7 +271,8 @@ wire  spv0_out_eninputxt2;
 sparse_mxv_top_top my_sparse_mxv_top_top(.clk(clk),.rst(rst),.idle(spv_idle),.ena(ena),.wea(wea),.dateout(spvdateout),.eninput(spv0_out_eninputxt),.weainput(spv0_out_weainputxt)
 ,.inputx_output(inputx_output),.inputw0(inputw00),.inputw1(inputw10),.inputw2(inputw02),.inputw3(inputw12)
 ,.inputw_index0(inputw_index00),.inputw_index1(inputw_index10),.inputw_index2(inputw_index02),.inputw_index3(inputw_index12)
-,.one_elements0(one_elements0),.one_elements1(one_elements1),.one_elements2(one_elements2),.one_elements3(one_elements3),.input_addr(spv_top0_output_addr),.addra(addra),.spv_driver_C_bram(spv_driver_C_bram1)) ;
+,.one_elements0(one_elements0),.one_elements1(one_elements1),.one_elements2(one_elements2),.one_elements3(one_elements3),.input_addr(spv_top0_output_addr)
+,.addra(addra00),.addra1(addra01),.addra2(addra02),.addra3(addra03),.spv_driver_C_bram(spv_driver_C_bram1)) ;
 
 
 
@@ -275,8 +287,8 @@ sparse_mxv_top_top my_sparse_mxv_top_top(.clk(clk),.rst(rst),.idle(spv_idle),.en
 
 
 // signal of input_w1 and index1
-wire [1023:0]  inputh_output;
-reg  [31:0]    inputh_input;
+wire [767:0]  inputh_output;
+reg  [47:0]    inputh_input;
 wire [4095:0]  inputw01;
 wire [4095:0]  inputw11;
 wire [639:0]  inputw_index01;
@@ -299,10 +311,10 @@ ht_1_bram myinitialh (
   .addrb(inputht_addr),  // input wire [5 : 0] addrb
   .doutb(inputh_output)  // output wire [1023 : 0] doutb
 );
-inputw_0_1  my_inputw_0_1(.clka(clk),.ena(ena1),.wea(wea1),.addra(addra1),.dina(inputw01),.douta(inputw01));
-inputw_index_0_1  my_inputw_index_0_1(.clka(clk),.ena(ena1),.wea(wea1),.addra(addra1),.dina(inputw_index01),.douta(inputw_index01));
-inputw_1_1  my_inputw_1_1(.clka(clk),.ena(ena1),.wea(wea1),.addra(addra1),.dina(inputw11),.douta(inputw11));
-inputw_index_1_1  my_inputw_index_1_1(.clka(clk),.ena(ena1),.wea(wea1),.addra(addra1),.dina(inputw_index11),.douta(inputw_index11));
+inputw_0_1  my_inputw_0_1(.clka(clk),.ena(ena1),.wea(wea1),.addra(addra10),.dina(inputw01),.douta(inputw01));
+inputw_index_0_1  my_inputw_index_0_1(.clka(clk),.ena(ena1),.wea(wea1),.addra(addra10),.dina(inputw_index01),.douta(inputw_index01));
+inputw_1_1  my_inputw_1_1(.clka(clk),.ena(ena1),.wea(wea1),.addra(addra11),.dina(inputw11),.douta(inputw11));
+inputw_index_1_1  my_inputw_index_1_1(.clka(clk),.ena(ena1),.wea(wea1),.addra(addra11),.dina(inputw_index11),.douta(inputw_index11));
 
 
 wire  spv1_out_eninputht;
@@ -314,19 +326,20 @@ wire [4095:0]  inputw13;
 wire [639:0]  inputw_index03;
 wire [639:0]  inputw_index13;
 
-inputw_0_3  my_inputw_0_3(.clka(clk),.ena(ena3),.wea(wea3),.addra(addra1),.dina(inputw03),.douta(inputw03));
-inputw_index_0_3  my_inputw_index_0_3(.clka(clk),.ena(ena3),.wea(wea3),.addra(addra1),.dina(inputw_index03),.douta(inputw_index03));
-inputw_1_3  my_inputw_1_3(.clka(clk),.ena(ena3),.wea(wea3),.addra(addra1),.dina(inputw13),.douta(inputw13));
-inputw_index_1_3  my_inputw_index_1_3(.clka(clk),.ena(ena3),.wea(wea3),.addra(addra1),.dina(inputw_index13),.douta(inputw_index13));
+inputw_0_3  my_inputw_0_3(.clka(clk),.ena(ena3),.wea(wea3),.addra(addra12),.dina(inputw03),.douta(inputw03));
+inputw_index_0_3  my_inputw_index_0_3(.clka(clk),.ena(ena3),.wea(wea3),.addra(addra12),.dina(inputw_index03),.douta(inputw_index03));
+inputw_1_3  my_inputw_1_3(.clka(clk),.ena(ena3),.wea(wea3),.addra(addra13),.dina(inputw13),.douta(inputw13));
+inputw_index_1_3  my_inputw_index_1_3(.clka(clk),.ena(ena3),.wea(wea3),.addra(addra13),.dina(inputw_index13),.douta(inputw_index13));
 
 
 wire  spv1_out_eninputht3;
 wire  spv1_out_weainputht3;
 
-sparse_mxv_top_top my_sparse_mxv_top_top1(.clk(clk),.rst(rst),.idle(spv_idle),.ena(ena1),.wea(wea1),.dateout(spvdateout1),.eninput(spv1_out_eninputht),.weainput(spv1_out_weainputht)
+sparse_mxv_top_top my_sparse_mxv_top_top1(.clk(clk),.rst(rst),.idle(spv_idle2),.ena(ena1),.wea(wea1),.dateout(spvdateout1),.eninput(spv1_out_eninputht),.weainput(spv1_out_weainputht)
 ,.inputx_output(inputh_output),.inputw0(inputw01),.inputw1(inputw11),.inputw2(inputw03),.inputw3(inputw13)
 ,.inputw_index0(inputw_index01),.inputw_index1(inputw_index11),.inputw_index2(inputw_index03),.inputw_index3(inputw_index13)
-,.one_elements0(one_elements4),.one_elements1(one_elements5),.one_elements2(one_elements6),.one_elements3(one_elements7),.input_addr(spv_top1_output_addr),.addra(addra1),.spv_driver_C_bram(spv_driver_C_bram2)) ;
+,.one_elements0(one_elements4),.one_elements1(one_elements5),.one_elements2(one_elements6),.one_elements3(one_elements7),.input_addr(spv_top1_output_addr)
+,.addra(addra10),.addra1(addra11),.addra2(addra12),.addra3(addra13),.spv_driver_C_bram(spv_driver_C_bram2)) ;
 
 
 //sparse_mxv_top_top my_sparse_mxv_top_top3(.clk(clk),.rst(rst),.idle(spv_idle),.ena(ena3),.wea(wea3),.dateout(spvdateout3),.eninput(spv1_out_eninputht3),.weainput(spv1_out_weainputht3)
@@ -446,6 +459,7 @@ Output_control my_Output_control(.clk(clk),.rst(rst),.idle(Output_control_idle),
             SM_idle <= 1;               // the SM idle 
             F_control_idle <= 1;        // the forget stage  control idle 
             spv_idle <= 1;              // the  spv module idle 
+            spv_idle2 <= 1;              // the  spv module idle 
             sigmoid_idle <= 1;          // the sigmoid idle 
             weainputxt <= 0;            // the signal to start  write xt bram 
             eninputxt  <= 0;            // the signal to start  read xt bram 
@@ -473,6 +487,7 @@ Output_control my_Output_control(.clk(clk),.rst(rst),.idle(Output_control_idle),
             SM_idle <= 1;               // the SM idle 
             F_control_idle <= 1;        // the forget stage  control idle 
             spv_idle <= 1;              // the  spv module idle 
+            spv_idle2 <= 1;              // the  spv module idle 
             sigmoid_idle <= 1;          // the sigmoid idle 
             weainputxt <= 0;            // the signal to start  write xt bram 
             eninputxt  <= 0;            // the signal to start  read xt bram 
@@ -505,6 +520,7 @@ Output_control my_Output_control(.clk(clk),.rst(rst),.idle(Output_control_idle),
                     SM_idle <= 1;
                     F_control_idle <= 1;
                     spv_idle <= 1;
+                    spv_idle2 <= 1;              // the  spv module idle 
                     sigmoid_idle <= 1;
                     weainputxt <= 0;
                     inputxt_addr <= 'b11111 ;
@@ -542,11 +558,13 @@ Output_control my_Output_control(.clk(clk),.rst(rst),.idle(Output_control_idle),
                         if (is_Sm) begin   // the result of Sm check
                             state <= Forget_stage;
                             spv_idle <= 1;
+                            spv_idle2 <= 1;              // the  spv module idle 
                             sigmoid_idle <= 1;
                         end
                         else begin
                             state <= Forget_stage;
                             spv_idle <= 1;
+                            spv_idle2 <= 1;              // the  spv module idle 
                             sigmoid_idle <= 1;
                         end
                         
@@ -554,7 +572,8 @@ Output_control my_Output_control(.clk(clk),.rst(rst),.idle(Output_control_idle),
                     else begin
                         state <= state;
                         spv_idle <= spv_idle;
-                        sigmoid_idle <= spv_idle;
+                        spv_idle2 <= spv_idle2;
+                        sigmoid_idle <= sigmoid_idle;
                     end
                     if (Start_X_bram_En) begin   // start  Xt bram  Xt-1 Bram
                         eninputxt <= 1;
@@ -572,10 +591,12 @@ Output_control my_Output_control(.clk(clk),.rst(rst),.idle(Output_control_idle),
                     if (Start_SM) begin
                         SM_idle <= 0;
                         spv_idle <= 1;
+                        spv_idle2 <= 1;
                     end
                     else begin
                         SM_idle <= SM_idle ;
                         spv_idle <= 0;
+                        spv_idle2 <= 0;
                     end
                     
                     
@@ -657,11 +678,13 @@ Output_control my_Output_control(.clk(clk),.rst(rst),.idle(Output_control_idle),
 
                     if (F_done) begin
                         spv_idle <=  1;
+                        spv_idle2 <=  1;
                         state <= Input_stage;
                     end
                     else begin
                         state <= state ;
                         spv_idle <= 0 ;
+                        spv_idle2 <= 0 ;
                     end
 
 
@@ -707,10 +730,12 @@ Output_control my_Output_control(.clk(clk),.rst(rst),.idle(Output_control_idle),
                     if (I_done) begin
                         state <= A_stage;  
                         spv_idle <= 1; 
+                        spv_idle2 <= 1; 
                     end
                     else begin
                         state <= state ;  
                         spv_idle <= 0;   
+                        spv_idle2 <= 0;  
                     end
                 end
 
@@ -788,11 +813,13 @@ Output_control my_Output_control(.clk(clk),.rst(rst),.idle(Output_control_idle),
                     end
                     if (A_done) begin
                         spv_idle <=  1;
+                        spv_idle2 <=  1;
                         state <= Output_stage;
                     end
                     else begin
                         state <= state ;
                         spv_idle <= 0 ;
+                        spv_idle2 <= 0 ;
                     end
 
 
@@ -803,6 +830,7 @@ Output_control my_Output_control(.clk(clk),.rst(rst),.idle(Output_control_idle),
                     input_C_bram <= input_C_bram;
                     Output_control_idle <= 0;
                     spv_idle <= 0;
+                    spv_idle2 <= 0;
                     inputxt_addr <= spv_top0_output_addr ;
                     weainputxt <=  spv0_out_weainputxt ;
                     eninputxt <=  spv0_out_eninputxt ;
@@ -884,11 +912,13 @@ Output_control my_Output_control(.clk(clk),.rst(rst),.idle(Output_control_idle),
 
                     if (Output_done) begin
                         spv_idle <=  1;
+                        spv_idle2 <=  1;
                         state <= Stop;
                     end
                     else begin
                         state <= state ;
                         spv_idle <= 0 ;
+                        spv_idle2 <= 0 ;
                     end
 
 
@@ -898,7 +928,8 @@ Output_control my_Output_control(.clk(clk),.rst(rst),.idle(Output_control_idle),
             state <= state ;              //   to  idle state 
             SM_idle <= SM_idle;               // the SM idle 
             F_control_idle <= F_control_idle;        // the forget stage  control idle 
-            spv_idle <= spv_idle;              // the  spv module idle 
+            spv_idle <= spv_idle;  
+            spv_idle2 <= spv_idle2;            // the  spv module idle 
             sigmoid_idle <= sigmoid_idle;          // the sigmoid idle 
             weainputxt <= weainputxt;            // the signal to start  write xt bram 
             eninputxt  <= eninputxt;            // the signal to start  read xt bram 
@@ -925,6 +956,7 @@ Output_control my_Output_control(.clk(clk),.rst(rst),.idle(Output_control_idle),
             SM_idle <= SM_idle;               // the SM idle 
             F_control_idle <= F_control_idle;        // the forget stage  control idle 
             spv_idle <= spv_idle;              // the  spv module idle 
+            spv_idle2 <= spv_idle2;
             sigmoid_idle <= sigmoid_idle;          // the sigmoid idle 
             weainputxt <= weainputxt;            // the signal to start  write xt bram 
             eninputxt  <= eninputxt;            // the signal to start  read xt bram 

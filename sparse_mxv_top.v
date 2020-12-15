@@ -25,7 +25,7 @@ module sparse_mxv_top(
     input clk,
     input rst,
     input idle,
-    input [1023:0] inputx_output,
+    input [767:0] inputx_output,
     input [4095:0] inputw0,
    input [4095:0] inputw1,
    input [4095:0] inputw2,
@@ -42,7 +42,7 @@ module sparse_mxv_top(
 // the module of sparse matrix X  dence vector 
 // latency is 30
     // reg to store temp result
-    reg  [448:0]   active_xt       [127:0] ;
+    reg  [384:0]   active_xt       [127:0] ;
 
 
     wire [15:0]    temp_result_128 [127:0];
@@ -1123,248 +1123,248 @@ always @ (posedge clk) begin    // the state machine to assign active_xt reg
             case(state)
             Load2:begin
                 if (statecount == 2) begin
-                    active_xt[0] <= inputx_output[511:0];
-                    active_xt[1] <= inputx_output[1023:512];
+                    active_xt[0] <= inputx_output[383:0];
+                    active_xt[1] <= inputx_output[767:384];
                 end
                 else if (statecount == 3) begin
-                    active_xt[2] <= inputx_output[511:0];
-                    active_xt[3] <= inputx_output[1023:512];
+                    active_xt[2] <= inputx_output[383:0];
+                    active_xt[3] <= inputx_output[767:384];
                 end
                 else if (statecount == 4) begin
-                    active_xt[4] <= inputx_output[511:0];
-                    active_xt[5] <= inputx_output[1023:512];
+                    active_xt[4] <= inputx_output[383:0];
+                    active_xt[5] <= inputx_output[767:384];
                 end
                 else if (statecount == 5) begin
-                    active_xt[6] <= inputx_output[511:0];
-                    active_xt[7] <= inputx_output[1023:512];
+                    active_xt[6] <= inputx_output[383:0];
+                    active_xt[7] <= inputx_output[767:384];
                 end
                 else if (statecount == 6) begin
-                    active_xt[8] <= inputx_output[511:0];
-                    active_xt[9] <= inputx_output[1023:512];
+                    active_xt[8] <= inputx_output[383:0];
+                    active_xt[9] <= inputx_output[767:384];
                 end
                 else if (statecount == 7) begin
-                    active_xt[10] <= inputx_output[511:0];
-                    active_xt[11] <= inputx_output[1023:512];
+                    active_xt[10] <= inputx_output[383:0];
+                    active_xt[11] <= inputx_output[767:384];
                 end
                 else if (statecount == 8) begin
-                    active_xt[12] <= inputx_output[511:0];
-                    active_xt[13] <= inputx_output[1023:512];
+                    active_xt[12] <= inputx_output[383:0];
+                    active_xt[13] <= inputx_output[767:384];
                 end
                 else if (statecount == 9) begin
-                    active_xt[14] <= inputx_output[511:0];
-                    active_xt[15] <= inputx_output[1023:512];
+                    active_xt[14] <= inputx_output[383:0];
+                    active_xt[15] <= inputx_output[767:384];
                 end
                 else if (statecount == 10) begin
-                    active_xt[16] <= inputx_output[511:0];
-                    active_xt[17] <= inputx_output[1023:512];
+                    active_xt[16] <= inputx_output[383:0];
+                    active_xt[17] <= inputx_output[767:384];
                 end
                 else if (statecount == 11) begin
-                    active_xt[18] <= inputx_output[511:0];
-                    active_xt[19] <= inputx_output[1023:512];
+                    active_xt[18] <= inputx_output[383:0];
+                    active_xt[19] <= inputx_output[767:384];
                 end
                 else if (statecount == 12) begin
-                    active_xt[20] <= inputx_output[511:0];
-                    active_xt[21] <= inputx_output[1023:512];
+                    active_xt[20] <= inputx_output[383:0];
+                    active_xt[21] <= inputx_output[767:384];
                 end
                 else if (statecount == 13) begin
-                    active_xt[22] <= inputx_output[511:0];
-                    active_xt[23] <= inputx_output[1023:512];
+                    active_xt[22] <= inputx_output[383:0];
+                    active_xt[23] <= inputx_output[767:384];
                 end
                 else if (statecount == 14) begin
-                    active_xt[24] <= inputx_output[511:0];
-                    active_xt[25] <= inputx_output[1023:512];
+                    active_xt[24] <= inputx_output[383:0];
+                    active_xt[25] <= inputx_output[767:384];
                 end
                 else if (statecount == 15) begin
-                    active_xt[26] <= inputx_output[511:0];
-                    active_xt[27] <= inputx_output[1023:512];
+                    active_xt[26] <= inputx_output[383:0];
+                    active_xt[27] <= inputx_output[767:384];
                 end
                 else if (statecount == 16) begin
-                    active_xt[28] <= inputx_output[511:0];
-                    active_xt[29] <= inputx_output[1023:512];
+                    active_xt[28] <= inputx_output[383:0];
+                    active_xt[29] <= inputx_output[767:384];
                 end
                 else if (statecount == 17) begin
-                    active_xt[30] <= inputx_output[511:0];
-                    active_xt[31] <= inputx_output[1023:512];
+                    active_xt[30] <= inputx_output[383:0];
+                    active_xt[31] <= inputx_output[767:384];
                 end
                 else if (statecount == 18) begin
-                    active_xt[32] <= inputx_output[511:0];
-                    active_xt[33] <= inputx_output[1023:512];
+                    active_xt[32] <= inputx_output[383:0];
+                    active_xt[33] <= inputx_output[767:384];
                 end
                 else if (statecount == 19) begin
-                    active_xt[34] <= inputx_output[511:0];
-                    active_xt[35] <= inputx_output[1023:512];
+                    active_xt[34] <= inputx_output[383:0];
+                    active_xt[35] <= inputx_output[767:384];
                 end
                 else if (statecount == 20) begin
-                    active_xt[36] <= inputx_output[511:0];
-                    active_xt[37] <= inputx_output[1023:512];
+                    active_xt[36] <= inputx_output[383:0];
+                    active_xt[37] <= inputx_output[767:384];
                 end
                 else if (statecount == 21) begin
-                    active_xt[38] <= inputx_output[511:0];
-                    active_xt[39] <= inputx_output[1023:512];
+                    active_xt[38] <= inputx_output[383:0];
+                    active_xt[39] <= inputx_output[767:384];
                 end
                 else if (statecount == 22) begin
-                    active_xt[40] <= inputx_output[511:0];
-                    active_xt[41] <= inputx_output[1023:512];
+                    active_xt[40] <= inputx_output[383:0];
+                    active_xt[41] <= inputx_output[767:384];
                 end
                 else if (statecount == 23) begin
-                    active_xt[42] <= inputx_output[511:0];
-                    active_xt[43] <= inputx_output[1023:512];
+                    active_xt[42] <= inputx_output[383:0];
+                    active_xt[43] <= inputx_output[767:384];
                 end
                 else if (statecount == 24) begin
-                    active_xt[44] <= inputx_output[511:0];
-                    active_xt[45] <= inputx_output[1023:512];
+                    active_xt[44] <= inputx_output[383:0];
+                    active_xt[45] <= inputx_output[767:384];
                 end
                 else if (statecount == 25) begin
-                    active_xt[46] <= inputx_output[511:0];
-                    active_xt[47] <= inputx_output[1023:512];
+                    active_xt[46] <= inputx_output[383:0];
+                    active_xt[47] <= inputx_output[767:384];
                 end
                 else if (statecount == 26) begin
-                    active_xt[48] <= inputx_output[511:0];
-                    active_xt[49] <= inputx_output[1023:512];
+                    active_xt[48] <= inputx_output[383:0];
+                    active_xt[49] <= inputx_output[767:384];
                 end
                 else if (statecount == 27) begin
-                    active_xt[50] <= inputx_output[511:0];
-                    active_xt[51] <= inputx_output[1023:512];
+                    active_xt[50] <= inputx_output[383:0];
+                    active_xt[51] <= inputx_output[767:384];
                 end
                 else if (statecount == 28) begin
-                    active_xt[52] <= inputx_output[511:0];
-                    active_xt[53] <= inputx_output[1023:512];
+                    active_xt[52] <= inputx_output[383:0];
+                    active_xt[53] <= inputx_output[767:384];
                 end
                 else if (statecount == 29) begin
-                    active_xt[54] <= inputx_output[511:0];
-                    active_xt[55] <= inputx_output[1023:512];
+                    active_xt[54] <= inputx_output[383:0];
+                    active_xt[55] <= inputx_output[767:384];
                 end
                 else if (statecount == 30) begin
-                    active_xt[56] <= inputx_output[511:0];
-                    active_xt[57] <= inputx_output[1023:512];
+                    active_xt[56] <= inputx_output[383:0];
+                    active_xt[57] <= inputx_output[767:384];
                 end
                 else if (statecount == 31) begin
-                    active_xt[58] <= inputx_output[511:0];
-                    active_xt[59] <= inputx_output[1023:512];
+                    active_xt[58] <= inputx_output[383:0];
+                    active_xt[59] <= inputx_output[767:384];
                 end
                 else if (statecount == 32) begin
-                    active_xt[60] <= inputx_output[511:0];
-                    active_xt[61] <= inputx_output[1023:512];
+                    active_xt[60] <= inputx_output[383:0];
+                    active_xt[61] <= inputx_output[767:384];
                 end
                 else if (statecount == 33) begin
-                    active_xt[62] <= inputx_output[511:0];
-                    active_xt[63] <= inputx_output[1023:512];
+                    active_xt[62] <= inputx_output[383:0];
+                    active_xt[63] <= inputx_output[767:384];
                 end
                 else if (statecount == 34) begin
-                    active_xt[64] <= inputx_output[511:0];
-                    active_xt[65] <= inputx_output[1023:512];
+                    active_xt[64] <= inputx_output[383:0];
+                    active_xt[65] <= inputx_output[767:384];
                 end
                 else if (statecount == 35) begin
-                    active_xt[66] <= inputx_output[511:0];
-                    active_xt[67] <= inputx_output[1023:512];
+                    active_xt[66] <= inputx_output[383:0];
+                    active_xt[67] <= inputx_output[767:384];
                 end
                 else if (statecount == 36) begin
-                    active_xt[68] <= inputx_output[511:0];
-                    active_xt[69] <= inputx_output[1023:512];
+                    active_xt[68] <= inputx_output[383:0];
+                    active_xt[69] <= inputx_output[767:384];
                 end
                 else if (statecount == 37) begin
-                    active_xt[70] <= inputx_output[511:0];
-                    active_xt[71] <= inputx_output[1023:512];
+                    active_xt[70] <= inputx_output[383:0];
+                    active_xt[71] <= inputx_output[767:384];
                 end
                 else if (statecount == 38) begin
-                    active_xt[72] <= inputx_output[511:0];
-                    active_xt[73] <= inputx_output[1023:512];
+                    active_xt[72] <= inputx_output[383:0];
+                    active_xt[73] <= inputx_output[767:384];
                 end
                 else if (statecount == 39) begin
-                    active_xt[74] <= inputx_output[511:0];
-                    active_xt[75] <= inputx_output[1023:512];
+                    active_xt[74] <= inputx_output[383:0];
+                    active_xt[75] <= inputx_output[767:384];
                 end
                 else if (statecount == 40) begin
-                    active_xt[76] <= inputx_output[511:0];
-                    active_xt[77] <= inputx_output[1023:512];
+                    active_xt[76] <= inputx_output[383:0];
+                    active_xt[77] <= inputx_output[767:384];
                 end
                 else if (statecount == 41) begin
-                    active_xt[78] <= inputx_output[511:0];
-                    active_xt[79] <= inputx_output[1023:512];
+                    active_xt[78] <= inputx_output[383:0];
+                    active_xt[79] <= inputx_output[767:384];
                 end
                 else if (statecount == 42) begin
-                    active_xt[80] <= inputx_output[511:0];
-                    active_xt[81] <= inputx_output[1023:512];
+                    active_xt[80] <= inputx_output[383:0];
+                    active_xt[81] <= inputx_output[767:384];
                 end
                 else if (statecount == 43) begin
-                    active_xt[82] <= inputx_output[511:0];
-                    active_xt[83] <= inputx_output[1023:512];
+                    active_xt[82] <= inputx_output[383:0];
+                    active_xt[83] <= inputx_output[767:384];
                 end
                 else if (statecount == 44) begin
-                    active_xt[84] <= inputx_output[511:0];
-                    active_xt[85] <= inputx_output[1023:512];
+                    active_xt[84] <= inputx_output[383:0];
+                    active_xt[85] <= inputx_output[767:384];
                 end
                 else if (statecount == 45) begin
-                    active_xt[86] <= inputx_output[511:0];
-                    active_xt[87] <= inputx_output[1023:512];
+                    active_xt[86] <= inputx_output[383:0];
+                    active_xt[87] <= inputx_output[767:384];
                 end
                 else if (statecount == 46) begin
-                    active_xt[88] <= inputx_output[511:0];
-                    active_xt[89] <= inputx_output[1023:512];
+                    active_xt[88] <= inputx_output[383:0];
+                    active_xt[89] <= inputx_output[767:384];
                 end
                 else if (statecount == 47) begin
-                    active_xt[90] <= inputx_output[511:0];
-                    active_xt[91] <= inputx_output[1023:512];
+                    active_xt[90] <= inputx_output[383:0];
+                    active_xt[91] <= inputx_output[767:384];
                 end
                 else if (statecount == 48) begin
-                    active_xt[92] <= inputx_output[511:0];
-                    active_xt[93] <= inputx_output[1023:512];
+                    active_xt[92] <= inputx_output[383:0];
+                    active_xt[93] <= inputx_output[767:384];
                 end
                 else if (statecount == 49) begin
-                    active_xt[94] <= inputx_output[511:0];
-                    active_xt[95] <= inputx_output[1023:512];
+                    active_xt[94] <= inputx_output[383:0];
+                    active_xt[95] <= inputx_output[767:384];
                 end
                 else if (statecount == 50) begin
-                    active_xt[96] <= inputx_output[511:0];
-                    active_xt[97] <= inputx_output[1023:512];
+                    active_xt[96] <= inputx_output[383:0];
+                    active_xt[97] <= inputx_output[767:384];
                 end
                 else if (statecount == 51) begin
-                    active_xt[98] <= inputx_output[511:0];
-                    active_xt[99] <= inputx_output[1023:512];
+                    active_xt[98] <= inputx_output[383:0];
+                    active_xt[99] <= inputx_output[767:384];
                 end
                 else if (statecount == 52) begin
-                    active_xt[100] <= inputx_output[511:0];
-                    active_xt[101] <= inputx_output[1023:512];
+                    active_xt[100] <= inputx_output[383:0];
+                    active_xt[101] <= inputx_output[767:384];
                 end
                 else if (statecount == 53) begin
-                    active_xt[102] <= inputx_output[511:0];
-                    active_xt[103] <= inputx_output[1023:512];
+                    active_xt[102] <= inputx_output[383:0];
+                    active_xt[103] <= inputx_output[767:384];
                 end
                 else if (statecount == 54) begin
-                    active_xt[104] <= inputx_output[511:0];
-                    active_xt[105] <= inputx_output[1023:512];
+                    active_xt[104] <= inputx_output[383:0];
+                    active_xt[105] <= inputx_output[767:384];
                 end
                 else if (statecount == 55) begin
-                    active_xt[106] <= inputx_output[511:0];
-                    active_xt[107] <= inputx_output[1023:512];
+                    active_xt[106] <= inputx_output[383:0];
+                    active_xt[107] <= inputx_output[767:384];
                 end
                 else if (statecount == 56) begin
-                    active_xt[108] <= inputx_output[511:0];
-                    active_xt[109] <= inputx_output[1023:512];
+                    active_xt[108] <= inputx_output[383:0];
+                    active_xt[109] <= inputx_output[767:384];
                 end
                 else if (statecount == 57) begin
-                    active_xt[110] <= inputx_output[511:0];
-                    active_xt[111] <= inputx_output[1023:512];
+                    active_xt[110] <= inputx_output[383:0];
+                    active_xt[111] <= inputx_output[767:384];
                 end
                 else if (statecount == 58) begin
-                    active_xt[112] <= inputx_output[511:0];
-                    active_xt[113] <= inputx_output[1023:512];
+                    active_xt[112] <= inputx_output[383:0];
+                    active_xt[113] <= inputx_output[767:384];
                 end
                 else if (statecount == 59) begin
-                    active_xt[114] <= inputx_output[511:0];
-                    active_xt[115] <= inputx_output[1023:512];
+                    active_xt[114] <= inputx_output[383:0];
+                    active_xt[115] <= inputx_output[767:384];
                 end
                 else if (statecount == 60) begin
-                    active_xt[116] <= inputx_output[511:0];
-                    active_xt[117] <= inputx_output[1023:512];
+                    active_xt[116] <= inputx_output[383:0];
+                    active_xt[117] <= inputx_output[767:384];
                 end
                 else if (statecount == 61) begin
-                    active_xt[118] <= inputx_output[511:0];
-                    active_xt[119] <= inputx_output[1023:512];
+                    active_xt[118] <= inputx_output[383:0];
+                    active_xt[119] <= inputx_output[767:384];
                 end
                 else if (statecount == 62) begin
-                    active_xt[120] <= inputx_output[511:0];
-                    active_xt[121] <= inputx_output[1023:512];
+                    active_xt[120] <= inputx_output[383:0];
+                    active_xt[121] <= inputx_output[767:384];
                 end
                 else begin
                     active_xt[0] <= active_xt[0];
@@ -1492,16 +1492,16 @@ always @ (posedge clk) begin    // the state machine to assign active_xt reg
                 end
             end
             Load3:begin
-                active_xt[122] <= inputx_output[511:0];
-                active_xt[123] <= inputx_output[1023:512];
+                active_xt[122] <= inputx_output[383:0];
+                active_xt[123] <= inputx_output[767:384];
             end
             Load4:begin
-                active_xt[124] <= inputx_output[511:0];
-                active_xt[125] <= inputx_output[1023:512];
+                active_xt[124] <= inputx_output[383:0];
+                active_xt[125] <= inputx_output[767:384];
             end
             Wait1:begin
-                active_xt[126] <= inputx_output[511:0];
-                active_xt[127] <= inputx_output[1023:512];
+                active_xt[126] <= inputx_output[383:0];
+                active_xt[127] <= inputx_output[767:384];
             end
             default:begin
                 active_xt[0] <= active_xt[0];
@@ -7584,15 +7584,15 @@ always @ (posedge clk) begin    // the state machine to add temp_result_2 and on
 
                 temp1_result_2[0] <= temp1_result_4[0] + temp1_result_4[1];
                 temp1_result_2[1] <= temp1_result_4[2] + temp1_result_4[3];
-                one_elements1 <= one_elements1 ;
+                one_elements1 <= temp1_result_2[0] + temp1_result_2[1];
 
                 temp2_result_2[0] <= temp2_result_4[0] + temp2_result_4[1];
                 temp2_result_2[1] <= temp2_result_4[2] + temp2_result_4[3];
-                one_elements2 <= one_elements2 ;
+                one_elements2 <= temp2_result_2[0] + temp2_result_2[1];
 
                 temp3_result_2[0] <= temp3_result_4[0] + temp3_result_4[1];
                 temp3_result_2[1] <= temp3_result_4[2] + temp3_result_4[3];
-                one_elements3 <= one_elements3 ;
+                one_elements3 <= temp3_result_2[0] + temp3_result_2[1];
             end
             Add128to64_64to32_32to16_16to8_8to4_4to2_2to1:begin
                 temp_result_2[0] <= temp_result_4[0] + temp_result_4[1];
@@ -7601,15 +7601,15 @@ always @ (posedge clk) begin    // the state machine to add temp_result_2 and on
 
                 temp1_result_2[0] <= temp1_result_4[0] + temp1_result_4[1];
                 temp1_result_2[1] <= temp1_result_4[2] + temp1_result_4[3];
-                one_elements1 <= one_elements1 ;
+                one_elements1 <= temp1_result_2[0] + temp1_result_2[1];
 
                 temp2_result_2[0] <= temp2_result_4[0] + temp2_result_4[1];
                 temp2_result_2[1] <= temp2_result_4[2] + temp2_result_4[3];
-                one_elements2 <= one_elements2 ;
+                one_elements2 <= temp2_result_2[0] + temp2_result_2[1];
 
                 temp3_result_2[0] <= temp3_result_4[0] + temp3_result_4[1];
                 temp3_result_2[1] <= temp3_result_4[2] + temp3_result_4[3];
-                one_elements3 <= one_elements3 ;
+                one_elements3 <= temp3_result_2[0] + temp3_result_2[1];
             end
             Add64to32_32to16_16to8_8to4_4to2_2to1:begin
                 temp_result_2[0] <= temp_result_4[0] + temp_result_4[1];
@@ -7618,15 +7618,15 @@ always @ (posedge clk) begin    // the state machine to add temp_result_2 and on
 
                 temp1_result_2[0] <= temp1_result_4[0] + temp1_result_4[1];
                 temp1_result_2[1] <= temp1_result_4[2] + temp1_result_4[3];
-                one_elements1 <= one_elements1 ;
+                one_elements1 <= temp1_result_2[0] + temp1_result_2[1];
 
                 temp2_result_2[0] <= temp2_result_4[0] + temp2_result_4[1];
                 temp2_result_2[1] <= temp2_result_4[2] + temp2_result_4[3];
-                one_elements2 <= one_elements2 ;
+                one_elements2 <= temp2_result_2[0] + temp2_result_2[1];
 
                 temp3_result_2[0] <= temp3_result_4[0] + temp3_result_4[1];
                 temp3_result_2[1] <= temp3_result_4[2] + temp3_result_4[3];
-                one_elements3 <= one_elements3 ;
+                one_elements3 <= temp3_result_2[0] + temp3_result_2[1];
             end
             Add32to16_16to8_8to4_4to2_2to1:begin
                 temp_result_2[0] <= temp_result_4[0] + temp_result_4[1];
@@ -7635,15 +7635,15 @@ always @ (posedge clk) begin    // the state machine to add temp_result_2 and on
 
                 temp1_result_2[0] <= temp1_result_4[0] + temp1_result_4[1];
                 temp1_result_2[1] <= temp1_result_4[2] + temp1_result_4[3];
-                one_elements1 <= one_elements1 ;
+                one_elements1 <= temp1_result_2[0] + temp1_result_2[1];
 
                 temp2_result_2[0] <= temp2_result_4[0] + temp2_result_4[1];
                 temp2_result_2[1] <= temp2_result_4[2] + temp2_result_4[3];
-                one_elements2 <= one_elements2 ;
+                one_elements2 <= temp2_result_2[0] + temp2_result_2[1];
 
                 temp3_result_2[0] <= temp3_result_4[0] + temp3_result_4[1];
                 temp3_result_2[1] <= temp3_result_4[2] + temp3_result_4[3];
-                one_elements3 <= one_elements3 ;
+                one_elements3 <= temp3_result_2[0] + temp3_result_2[1];
             end
             Add16to8_8to4_4to2_2to1:begin
                 temp_result_2[0] <= temp_result_4[0] + temp_result_4[1];
@@ -7652,15 +7652,15 @@ always @ (posedge clk) begin    // the state machine to add temp_result_2 and on
 
                 temp1_result_2[0] <= temp1_result_4[0] + temp1_result_4[1];
                 temp1_result_2[1] <= temp1_result_4[2] + temp1_result_4[3];
-                one_elements1 <= one_elements1 ;
+                one_elements1 <= temp1_result_2[0] + temp1_result_2[1];
 
                 temp2_result_2[0] <= temp2_result_4[0] + temp2_result_4[1];
                 temp2_result_2[1] <= temp2_result_4[2] + temp2_result_4[3];
-                one_elements2 <= one_elements2 ;
+                one_elements2 <= temp2_result_2[0] + temp2_result_2[1];
 
                 temp3_result_2[0] <= temp3_result_4[0] + temp3_result_4[1];
                 temp3_result_2[1] <= temp3_result_4[2] + temp3_result_4[3];
-                one_elements3 <= one_elements3 ;
+                one_elements3 <= temp3_result_2[0] + temp3_result_2[1];
             end
             Add8to4_4to2_2to1:begin
                 temp_result_2[0] <= temp_result_4[0] + temp_result_4[1];
@@ -7669,15 +7669,15 @@ always @ (posedge clk) begin    // the state machine to add temp_result_2 and on
 
                 temp1_result_2[0] <= temp1_result_4[0] + temp1_result_4[1];
                 temp1_result_2[1] <= temp1_result_4[2] + temp1_result_4[3];
-                one_elements1 <= one_elements1 ;
+                one_elements1 <= temp1_result_2[0] + temp1_result_2[1];
 
                 temp2_result_2[0] <= temp2_result_4[0] + temp2_result_4[1];
                 temp2_result_2[1] <= temp2_result_4[2] + temp2_result_4[3];
-                one_elements2 <= one_elements2 ;
+                one_elements2 <= temp2_result_2[0] + temp2_result_2[1];
 
                 temp3_result_2[0] <= temp3_result_4[0] + temp3_result_4[1];
                 temp3_result_2[1] <= temp3_result_4[2] + temp3_result_4[3];
-                one_elements3 <= one_elements3 ;
+                one_elements3 <= temp3_result_2[0] + temp3_result_2[1];
             end
 
             Add4to2_2to1:begin
@@ -7687,15 +7687,15 @@ always @ (posedge clk) begin    // the state machine to add temp_result_2 and on
 
                 temp1_result_2[0] <= temp1_result_4[0] + temp1_result_4[1];
                 temp1_result_2[1] <= temp1_result_4[2] + temp1_result_4[3];
-                one_elements1 <= one_elements1 ;
+                one_elements1 <= temp1_result_2[0] + temp1_result_2[1];
 
                 temp2_result_2[0] <= temp2_result_4[0] + temp2_result_4[1];
                 temp2_result_2[1] <= temp2_result_4[2] + temp2_result_4[3];
-                one_elements2 <= one_elements2 ;
+                one_elements2 <= temp2_result_2[0] + temp2_result_2[1];
 
                 temp3_result_2[0] <= temp3_result_4[0] + temp3_result_4[1];
                 temp3_result_2[1] <= temp3_result_4[2] + temp3_result_4[3];
-                one_elements3 <= one_elements3 ;
+                one_elements3 <= temp3_result_2[0] + temp3_result_2[1];
             end
             Add2to1:begin
                 temp_result_2[0] <= temp_result_2[0];
@@ -7704,15 +7704,15 @@ always @ (posedge clk) begin    // the state machine to add temp_result_2 and on
 
                 temp1_result_2[0] <= temp1_result_4[0] + temp1_result_4[1];
                 temp1_result_2[1] <= temp1_result_4[2] + temp1_result_4[3];
-                one_elements1 <= one_elements1 ;
+                one_elements1 <= temp1_result_2[0] + temp1_result_2[1];
 
                 temp2_result_2[0] <= temp2_result_4[0] + temp2_result_4[1];
                 temp2_result_2[1] <= temp2_result_4[2] + temp2_result_4[3];
-                one_elements2 <= one_elements2 ;
+                one_elements2 <= temp2_result_2[0] + temp2_result_2[1];
 
                 temp3_result_2[0] <= temp3_result_4[0] + temp3_result_4[1];
                 temp3_result_2[1] <= temp3_result_4[2] + temp3_result_4[3];
-                one_elements3 <= one_elements3 ;
+                one_elements3 <= temp3_result_2[0] + temp3_result_2[1];
             end
             default:begin
                 temp_result_2[0] <= temp_result_2[0];

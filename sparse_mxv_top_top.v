@@ -25,7 +25,7 @@ module sparse_mxv_top_top(
 input clk,
     input rst,
     input idle,
-    input [1023:0] inputx_output,
+    input [783:0] inputx_output,
     input [4095:0] inputw0,
     input [4095:0] inputw1,
     input [4095:0] inputw2,
@@ -45,7 +45,10 @@ input clk,
     output reg dateout ,
     output reg spv_driver_C_bram,
     output reg [7:0] input_addr,
-    output  reg [10:0] addra 
+    output  reg [10:0] addra ,
+    output  reg [10:0] addra1 ,
+    output  reg [10:0] addra2 ,
+    output  reg [10:0] addra3 
     );
     
     //latency is 33

@@ -24,7 +24,7 @@ module sparse_mxv(
     input clk,
     input rst,
     input idle,
-    input [511:0] inputx,
+    input [384:0] inputx,
     input [31:0]  inputw,
     input [19:0]  inputw_index,
     input [13:0]  counter,
@@ -36,7 +36,7 @@ module sparse_mxv(
     
     reg    [63:0]     sparse_bank_32_1_output ;
     reg    [19:0]     sparse_bank_index_32_1_output;
-    reg    [15:0]     xt      [31:0];
+    reg    [11:0]     xt      [31:0];
     wire    [23:0]     mul_result  [3:0];
     reg    [15:0]     add_result2 [1:0];
     
@@ -262,38 +262,38 @@ always @ (posedge clk) begin
         else begin
             case(state)
             Start:begin
-                xt[0] <= inputx[15:0];
-                xt[1] <= inputx[31:16];
-                xt[2] <= inputx[47:32];
-                xt[3] <= inputx[63:48];
-                xt[4] <= inputx[79:64];
-                xt[5] <= inputx[95:80];
-                xt[6] <= inputx[111:96];
-                xt[7] <= inputx[127:112];
-                xt[8] <= inputx[143:128];
-                xt[9] <= inputx[159:144];
-                xt[10] <= inputx[175:160];
-                xt[11] <= inputx[191:176];
-                xt[12] <= inputx[207:192];
-                xt[13] <= inputx[223:208];
-                xt[14] <= inputx[239:224];
-                xt[15] <= inputx[255:240];
-                xt[16] <= inputx[271:256];
-                xt[17] <= inputx[287:272];
-                xt[18] <= inputx[303:288];
-                xt[19] <= inputx[319:304];
-                xt[20] <= inputx[335:320];
-                xt[21] <= inputx[351:336];
-                xt[22] <= inputx[367:352];
-                xt[23] <= inputx[383:368];
-                xt[24] <= inputx[399:384];
-                xt[25] <= inputx[415:400];
-                xt[26] <= inputx[431:416];
-                xt[27] <= inputx[447:432];
-                xt[28] <= inputx[463:448];
-                xt[29] <= inputx[479:464];
-                xt[30] <= inputx[495:480];
-                xt[31] <= inputx[511:496];
+                xt[0] <= inputx[11:0];
+                xt[1] <= inputx[23:12];
+                xt[2] <= inputx[35:24];
+                xt[3] <= inputx[47:36];
+                xt[4] <= inputx[59:48];
+                xt[5] <= inputx[71:60];
+                xt[6] <= inputx[83:72];
+                xt[7] <= inputx[95:84];
+                xt[8] <= inputx[107:96];
+                xt[9] <= inputx[119:108];
+                xt[10] <= inputx[131:120];
+                xt[11] <= inputx[143:132];
+                xt[12] <= inputx[155:144];
+                xt[13] <= inputx[167:156];
+                xt[14] <= inputx[179:168];
+                xt[15] <= inputx[191:180];
+                xt[16] <= inputx[203:192];
+                xt[17] <= inputx[215:204];
+                xt[18] <= inputx[227:216];
+                xt[19] <= inputx[239:228];
+                xt[20] <= inputx[251:240];
+                xt[21] <= inputx[263:252];
+                xt[22] <= inputx[275:264];
+                xt[23] <= inputx[287:276];
+                xt[24] <= inputx[299:288];
+                xt[25] <= inputx[311:300];
+                xt[26] <= inputx[323:312];
+                xt[27] <= inputx[335:324];
+                xt[28] <= inputx[347:336];
+                xt[29] <= inputx[359:348];
+                xt[30] <= inputx[371:360];
+                xt[31] <= inputx[383:372];
             end
 
             default:begin
