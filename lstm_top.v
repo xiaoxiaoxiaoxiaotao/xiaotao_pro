@@ -19,8 +19,8 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-`define sigmoid_counter 1024 
-`define tanh_counter 1024 
+`define sigmoid_counter 64 
+`define tanh_counter 64 
 module lstm_top(
     input clk_in,
     input rst,
@@ -257,7 +257,7 @@ wire   Start_X_bram_En;
 wire   Start_X_bram_Wea;
 wire   Start_SM  ;
 similarity_check_top my_SM_check(
-    .clk(clk),. rst(rst),.idle(SM_idle),.xt(inputx_output),.xt_1(inputxt_1_output),.count(63),.similarity_flag(is_Sm),.SM_done(Sm_is_done)
+    .clk(clk),. rst(rst),.idle(SM_idle),.xt(inputx_output),.xt_1(inputxt_1_output),.count(15),.similarity_flag(is_Sm),.SM_done(Sm_is_done)
     );
 
 SM_control  mySM_control(.clk(clk),.rst(rst),.idle(SM_control_idle),.SM_out(Sm_is_done),.Start_SM(Start_SM),.X_bram_En(Start_X_bram_En),.X_bram_Wea(Start_X_bram_Wea));
@@ -493,7 +493,7 @@ wire [1023:0]  inputw014;
 wire [159:0]  inputw_index014;
 
 wire [1023:0]  inputw015;
-wire [159:0]  inputw_index00;
+wire [159:0]  inputw_index015;
 
 
 
@@ -1126,7 +1126,7 @@ Output_control my_Output_control(.clk(clk),.rst(rst),.idle(Output_control_idle),
         else if (idle) begin
             done <= 0;
             state <= Start ;              //   to  idle state 
-            SM_idle <= 1;               // the SM idle 
+            SM_idle <= 0;               // the SM idle 
             F_control_idle <= 1;        // the forget stage  control idle 
             spv_idle <= 1;              // the  spv module idle 
             spv_idle1 <= 1;              // the  spv module idle 

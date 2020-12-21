@@ -18,9 +18,9 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-`define counter 1024
-`define counter_1 1023
-`define counter_2 1022
+`define counter 64
+`define counter_1 63
+`define counter_2 62
 module sparse_mxv_top_top(
 input clk,
     input rst,

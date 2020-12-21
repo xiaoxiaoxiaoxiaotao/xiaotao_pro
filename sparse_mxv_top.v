@@ -19,8 +19,8 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-`define counter 1024
-`define newcounter 1031
+`define counter 64
+`define newcounter 71
 module sparse_mxv_top(
     input clk,
     input rst,
