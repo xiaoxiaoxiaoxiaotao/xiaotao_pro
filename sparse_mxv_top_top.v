@@ -25,19 +25,34 @@ module sparse_mxv_top_top(
 input clk,
     input rst,
     input idle,
-    input [783:0] inputx_output,
-    input [4095:0] inputw0,
-    input [4095:0] inputw1,
-    input [4095:0] inputw2,
-    input [4095:0] inputw3,
-    input [639:0] inputw_index0,
-    input [639:0] inputw_index1,
-    input [639:0] inputw_index2,
-    input [639:0] inputw_index3,
+    input [1023:0] inputx_output,
+    input [1023:0] inputw0,
+    input [1023:0] inputw1,
+    input [1023:0] inputw2,
+    input [1023:0] inputw3,
+    input [1023:0] inputw4,
+    input [1023:0] inputw5,
+    input [1023:0] inputw6,
+    input [1023:0] inputw7,
+   
+    input [159:0] inputw_index0,
+    input [159:0] inputw_index1,
+    input [159:0] inputw_index2,
+    input [159:0] inputw_index3,
+    input [159:0] inputw_index4,
+    input [159:0] inputw_index5,
+    input [159:0] inputw_index6,
+    input [159:0] inputw_index7,
+
     output wire [15:0] one_elements0,
     output wire [15:0] one_elements1,
     output wire [15:0] one_elements2,
     output wire [15:0] one_elements3,
+    output wire [15:0] one_elements4,
+    output wire [15:0] one_elements5,
+    output wire [15:0] one_elements6,
+    output wire [15:0] one_elements7,
+
     output reg ena,
     output reg wea,
     output reg eninput ,
@@ -45,10 +60,7 @@ input clk,
     output reg dateout ,
     output reg spv_driver_C_bram,
     output reg [7:0] input_addr,
-    output  reg [10:0] addra ,
-    output  reg [10:0] addra1 ,
-    output  reg [10:0] addra2 ,
-    output  reg [10:0] addra3 
+    output  reg [10:0] addra 
     );
     
     //latency is 33
@@ -56,9 +68,17 @@ input clk,
     reg  [2:0] state ;
     reg  [11:0] statecount;
 
-    sparse_mxv_top sparse_mxv_top_test0(.clk(clk),.rst(rst),.idle(idle),.one_elements(one_elements0),.one_elements1(one_elements1),.one_elements2(one_elements2),.one_elements3(one_elements3)
-    ,.inputx_output(inputx_output),.inputw0(inputw0),.inputw1(inputw1),.inputw2(inputw2),.inputw3(inputw3)
-    ,.inputw0_index(inputw_index0),.inputw1_index(inputw_index1),.inputw2_index(inputw_index2),.inputw3_index(inputw_index3));
+    sparse_mxv_top sparse_mxv_top_test0(.clk(clk),.rst(rst),.idle(idle)
+    ,.one_elements(one_elements0),.one_elements1(one_elements1),.one_elements4(one_elements2),.one_elements5(one_elements3)
+    ,.one_elements8(one_elements4),.one_elements9(one_elements5),.one_elements12(one_elements6),.one_elements13(one_elements7)
+
+
+    ,.inputx_output(inputx_output),.inputw0(inputw0),.inputw4(inputw1),.inputw5(inputw2),.inputw8(inputw3)
+    ,.inputw9(inputw4),.inputw12(inputw5),.inputw13(inputw6)
+
+
+    ,.inputw0_index(inputw_index0),.inputw1_index(inputw_index1),.inputw4_index(inputw_index2),.inputw5_index(inputw_index3)
+    ,.inputw8_index(inputw_index4),.inputw9_index(inputw_index5),.inputw12_index(inputw_index6),.inputw13_index(inputw_index7));
  
     //sparse_mxv_top sparse_mxv_top_test1(.clk(clk),.rst(rst),.idle(idle),.one_elements(one_elements1),.inputx_output(inputx_output),.inputw0(inputw1),.inputw0_index(inputw_index1));
 
